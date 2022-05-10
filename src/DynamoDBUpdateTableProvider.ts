@@ -1,6 +1,7 @@
-import * as iam from '@aws-cdk/aws-iam';
-import * as core from '@aws-cdk/core';
-import * as cr from '@aws-cdk/custom-resources';
+import * as iam from 'aws-cdk-lib/aws-iam';
+import * as core from 'aws-cdk-lib'; // todo remove import unused
+import { Construct } from 'constructs';
+import * as cr from 'aws-cdk-lib/custom-resources';
 
 import { DynamoDBUpdateTableFunction } from './dynamoDBUpdateTable-function';
 // export interface DynamoDBUpdateTableProviderProps {}
@@ -12,7 +13,7 @@ export class DynamoDBUpdateTableProvider extends core.NestedStack {
   /**
    * Creates a stack-singleton resource provider nested stack.
    */
-  public static getOrCreate(scope: core.Construct) {
+  public static getOrCreate(scope: Construct) {
     const stack = core.Stack.of(scope);
     const uid = '@aws-cdk/aws-dynamodb.GSIsUpdateProvider';
     return (stack.node.tryFindChild(uid) as DynamoDBUpdateTableProvider) || new DynamoDBUpdateTableProvider(stack, uid);
@@ -23,7 +24,7 @@ export class DynamoDBUpdateTableProvider extends core.NestedStack {
    */
   public readonly provider: cr.Provider;
 
-  constructor(scope: core.Construct, id: string) {
+  constructor(scope: Construct, id: string) {
     super(scope, id);
 
     const onEvent = new DynamoDBUpdateTableFunction(this, 'DynamoDBTableUpdate', {

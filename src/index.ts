@@ -1,6 +1,7 @@
-import * as dynamodb from '@aws-cdk/aws-dynamodb';
-import { ScalableTableAttribute } from '@aws-cdk/aws-dynamodb/lib/scalable-table-attribute';
-import * as core from '@aws-cdk/core';
+import * as dynamodb from 'aws-cdk-lib/aws-dynamodb';
+import { ScalableTableAttribute } from 'aws-cdk-lib/aws-dynamodb/lib/scalable-table-attribute';
+import * as core from 'aws-cdk-lib';
+import { Construct } from 'constructs';
 import { DynamoDBUpdateTableProvider } from './DynamoDBUpdateTableProvider';
 
 const HASH_KEY_TYPE = 'HASH';
@@ -28,7 +29,7 @@ export class Table extends dynamodb.Table {
     return this.globalSecondaryIndexesBuilders.length > 0;
   }
 
-  constructor(scope: core.Construct, id: string, props: dynamodb.TableProps) {
+  constructor(scope: Construct, id: string, props: dynamodb.TableProps) {
     super(scope, id, props);
 
     // Keep original billing mode logic
