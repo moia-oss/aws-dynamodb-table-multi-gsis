@@ -17,7 +17,7 @@ export class DynamoDBUpdateTableFunction extends lambda.Function {
     super(scope, id, {
       description: 'src/dynamoDBUpdateTable.lambda.ts',
       ...props,
-      runtime: lambda.Runtime.NODEJS_14_X,
+      runtime: lambda.Runtime.NODEJS_18_X,
       handler: 'index.handler',
       code: lambda.Code.fromAsset(path.join(__dirname, '../assets/dynamoDBUpdateTable.lambda')),
     });
