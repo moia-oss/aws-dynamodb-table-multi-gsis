@@ -1,5 +1,5 @@
 {
-  "name": "<your-registry>/aws-dynamodb-table-multi-gsis",
+  "name": "@moia-oss/aws-dynamodb-table-multi-gsis",
   "repository": {
     "type": "git",
     "url": "https://github.com/moia-oss/aws-dynamodb-table-multi-gsis.git"
@@ -51,7 +51,7 @@
   ],
   "main": "lib/index.js",
   "license": "Apache-2.0",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "jest": {
     "runner": "groups",
     "testMatch": [
