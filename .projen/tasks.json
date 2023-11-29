@@ -54,7 +54,7 @@
       "description": "Create a JavaScript bundle from src/dynamoDBUpdateTable.lambda.ts",
       "steps": [
         {
-          "exec": "esbuild --bundle src/dynamoDBUpdateTable.lambda.ts --target=\"node18\" --platform=\"node\" --outfile=\"assets/dynamoDBUpdateTable.lambda/index.js\" --external:aws-sdk"
+          "exec": "esbuild --bundle src/dynamoDBUpdateTable.lambda.ts --target=\"node18\" --platform=\"node\" --outfile=\"assets/dynamoDBUpdateTable.lambda/index.js\" "
         }
       ]
     },
@@ -63,7 +63,7 @@
       "description": "Continuously update the JavaScript bundle from src/dynamoDBUpdateTable.lambda.ts",
       "steps": [
         {
-          "exec": "esbuild --bundle src/dynamoDBUpdateTable.lambda.ts --target=\"node18\" --platform=\"node\" --outfile=\"assets/dynamoDBUpdateTable.lambda/index.js\" --external:aws-sdk --watch"
+          "exec": "esbuild --bundle src/dynamoDBUpdateTable.lambda.ts --target=\"node18\" --platform=\"node\" --outfile=\"assets/dynamoDBUpdateTable.lambda/index.js\" --watch"
         }
       ]
     },
