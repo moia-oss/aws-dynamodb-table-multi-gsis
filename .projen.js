@@ -14,7 +14,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   cdkDependenciesAsDeps: false,
   cdkDependencies: ['@aws-cdk/aws-dynamodb', '@aws-cdk/custom-resources', '@aws-cdk/aws-iam'],
   cdkTestDependencies: ['@aws-cdk/aws-applicationautoscaling', '@aws-cdk/aws-kinesis', '@aws-cdk/aws-kms'],
-  externals: ['aws-sdk'],
+  externals: [],
   // description: undefined,          /* The description is just a string that helps people understand the purpose of the package. */
   devDeps: [
     'aws-sdk',
