@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-import { AttributeType, BillingMode } from 'aws-cdk-lib/aws-dynamodb';
 import * as cdk from 'aws-cdk-lib';
+import { AttributeType, BillingMode } from 'aws-cdk-lib/aws-dynamodb';
 import { Table } from './';
 
 const app = new cdk.App();
