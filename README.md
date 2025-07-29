@@ -44,9 +44,24 @@ If the existing table already has
 * 1 GSI, it will delete it and recreate it with new way of managing GSIs ...
 * 2 or more GSIs, update will fail because it will try to delete those GSIs and recreate them with the new method but since it's not possible to delete more than one using the old management system the stack update will fail :( => workaround delete those GSIs from your cdk app before changing to new implementation
 
-## Development
+## Test 
 
-After installing the project dependencies (`npm ci`) you will be able to use the supplied scripts to compile and publish a package to a registry of your choosing.
-Make sure to adapt the package name in the `package.json` to match your target registry and package name before publishing.
-Also consider bumping the package version when making changes to the construct according to [semver](https://semver.org/).
-The `0.2.x` version used on this branch indicates the pre-release state of the package and suggests CDK 2.x compatibility.
+To test the construct, you can run the following commands:
+
+```bash
+npm install
+npm run build
+npm run bundle:dynamoDBUpdateTable.lambda
+npm run test
+```
+
+## Release 
+
+To release a new version of the construct, you can run the following commands:
+
+```bash
+npm install
+npm run build
+npm run bundle:dynamoDBUpdateTable.lambda
+npm publish
+```
