@@ -46,7 +46,7 @@ If the existing table already has
 
 ## Test 
 
-To test the construct, you can run the following command:
+To test the construct, you can run the following commands:
 
 ```bash
 npm install
@@ -57,7 +57,7 @@ npm run test
 
 ## Relase 
 
-To release a new version of the construct, you can run the following command:
+To release a new version of the construct, you can run the following commands:
 
 ```bash
 npm install
