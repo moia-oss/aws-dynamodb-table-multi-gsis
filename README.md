@@ -55,7 +55,7 @@ npm run bundle:dynamoDBUpdateTable.lambda
 npm run test
 ```
 
-## Relase 
+## Release 
 
 To release a new version of the construct, you can run the following commands:
 
