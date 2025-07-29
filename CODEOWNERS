@@ -1,0 +1,8 @@
+# github codeowners file
+#
+# https://help.github.com/articles/about-codeowners/
+#
+# The members of Team Trip Management will be the default owners for everything in
+# the repo. The team members will be requested for
+# review when someone opens a pull request.
+* @moia-dev/trip-management
