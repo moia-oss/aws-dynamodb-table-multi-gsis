@@ -1,7 +1,6 @@
 # aws-cdk-lib/aws-dynamodb + multi GSIs update capability
 
 _This branch bumps version compatibility of the construct to CDK 2.x while removing most dependency to projen._
-_It also introduces a significant regression in test coverage (read; none) which is why it is not in a state to re-contribute to mainline development._
 _If you still choose to use it in your project as is, please publish to a (private) registry of your choosing as per the instructions under the Development section._
 
 This construct is fixing https://github.com/aws/aws-cdk/issues/12246 by simply overriding [@aws-cdk/aws-dynamodb Table addGlobalSecondaryIndex](https://github.com/aws/aws-cdk/blob/master/packages/%40aws-cdk/aws-dynamodb/lib/table.ts#L1231) which will leverage the [@aws-cdk/custom-resource Provider](https://docs.aws.amazon.com/cdk/api/v1/docs/custom-resources-readme.html) to sequentially create Global GSIs.

@@ -6,7 +6,7 @@
     "experimentalDecorators": true,
     "inlineSourceMap": true,
     "inlineSources": true,
-    "lib": ["es2023"],
+    "lib": ["es2022"],
     "module": "CommonJS",
     "noEmitOnError": false,
     "noFallthroughCasesInSwitch": true,

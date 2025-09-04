@@ -112,7 +112,7 @@ exports[`schema details snapshot testing 1`] = `
               {
                 "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
               },
-              "/6465cebcdd67dc03bfc6c4306e1019b022e9074c0dada0d731869180b16cdb3d.json",
+              "/1a28a7cdfd9555e890b529f3dc889c5b3243913e30ba4c95d915dd8cd9ca5132.json",
             ],
           ],
         },
