@@ -9,7 +9,7 @@
     "eslint": "npx eslint",
     "publish": "npm publish",
     "test": "npx tsc --project tsconfig.dev.json && npx jest --updateSnapshot",
-    "bundle:dynamoDBUpdateTable.lambda": "esbuild src/dynamoDBUpdateTable.lambda.ts --bundle --platform=node --target=node22 --outfile=assets/dynamoDBUpdateTable.lambda/index.js"
+    "bundle:dynamoDBUpdateTable.lambda": "esbuild src/dynamoDBUpdateTable.lambda.ts --bundle --platform=node --target=node22 --outfile=assets/dynamoDBUpdateTable.lambda/index.js --external:aws-sdk"
   },
   "author": {
     "name": "Florian CHAZAL",
