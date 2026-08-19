@@ -9,7 +9,7 @@
     "eslint": "npx eslint",
     "publish": "npm publish",
     "test": "npx tsc --project tsconfig.dev.json && npx jest --updateSnapshot",
-    "bundle:dynamoDBUpdateTable.lambda": "esbuild src/dynamoDBUpdateTable.lambda.ts --bundle --platform=node --target=node22 --outfile=assets/dynamoDBUpdateTable.lambda/index.js --external:aws-sdk"
+    "bundle:dynamoDBUpdateTable.lambda": "esbuild src/dynamoDBUpdateTable.lambda.ts --bundle --platform=node --target=node22 --outfile=assets/dynamoDBUpdateTable.lambda/index.js"
   },
   "author": {
     "name": "Florian CHAZAL",
@@ -24,7 +24,7 @@
     "@typescript-eslint/eslint-plugin": "^8",
     "@typescript-eslint/parser": "^8",
     "aws-cdk-lib": "2.207.0",
-    "aws-sdk": "2.1692.0",
+    "@aws-sdk/client-dynamodb": "^3.0.0",
     "constructs": "10.4.2",
     "esbuild": "^0.25.8",
     "eslint": "^9",
@@ -50,7 +50,7 @@
   ],
   "main": "lib/index.js",
   "license": "Apache-2.0",
-  "version": "0.7.2",
+  "version": "0.8.0",
   "jest": {
     "runner": "groups",
     "testMatch": [
