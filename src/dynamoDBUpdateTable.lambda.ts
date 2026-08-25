@@ -3,7 +3,9 @@ import type {
   IsCompleteResponse,
   IsCompleteRequest,
 } from 'aws-cdk-lib/custom-resources/lib/provider-framework/types';
-import { DynamoDB } from 'aws-sdk'; // eslint-disable-line import/no-extraneous-dependencies
+import { DynamoDBClient, UpdateTableCommand, DescribeTableCommand } from '@aws-sdk/client-dynamodb'; // eslint-disable-line import/no-extraneous-dependencies
+
+const client = new DynamoDBClient({});
 
 export async function handler(event: any): Promise<any> {
   if (event.data) {
@@ -16,8 +18,6 @@ export async function handler(event: any): Promise<any> {
 export async function onEventHandler(event: any): Promise<any> {
   console.log('Event: %j', event);
 
-  const dynamodb = new DynamoDB();
-
   const tableName = event.ResourceProperties.TableName;
   const capitalizedAttributeDefinitions = event.ResourceProperties.AttributeDefinitions;
   const capitalizedKeySchema = event.ResourceProperties.KeySchema;
@@ -25,7 +25,7 @@ export async function onEventHandler(event: any): Promise<any> {
   const capitalizedProjection = event.ResourceProperties.Projection;
   let updateTableAction: 'Create' | 'Update' | 'Delete';
   updateTableAction = event.RequestType;
-  const params: DynamoDB.UpdateTableInput = {
+  const params = {
     TableName: tableName,
     AttributeDefinitions: capitalizedAttributeDefinitions,
     GlobalSecondaryIndexUpdates: [
@@ -39,9 +39,7 @@ export async function onEventHandler(event: any): Promise<any> {
     ],
   };
   console.log(`Updating table ${tableName} with params ${JSON.stringify(params)}`);
-  const data = await dynamodb
-    .updateTable(params)
-    .promise();
+  const data = await client.send(new UpdateTableCommand(params as any));
   console.log('Update table: %j', data);
 
   return { PhysicalResourceId: `${indexName}`, data: { fwdToIsComplete: true } };
@@ -50,13 +48,9 @@ export async function onEventHandler(event: any): Promise<any> {
 export async function isCompleteHandler(event: IsCompleteRequest): Promise<IsCompleteResponse> {
   console.log('Event: %j', event);
 
-  const dynamodb = new DynamoDB();
-
-  const data = await dynamodb
-    .describeTable({
-      TableName: event.ResourceProperties.TableName,
-    })
-    .promise();
+  const data = await client.send(new DescribeTableCommand({
+    TableName: event.ResourceProperties.TableName,
+  }));
   console.log('Describe table: %j', data);
 
   const tableActive = data.Table?.TableStatus === 'ACTIVE';
