@@ -5,10 +5,12 @@
     "url": "https://github.com/moia-oss/aws-dynamodb-table-multi-gsis.git"
   },
   "scripts": {
-    "build": "npx tsc",
+    "build": "npx tsc && npm run bundle:dynamoDBUpdateTable.lambda",
     "eslint": "npx eslint",
     "publish": "npm publish",
-    "test": "npx tsc --project tsconfig.dev.json && npx jest --updateSnapshot",
+    "prepack": "npm run build",
+    "test": "npm run build && npx tsc --project tsconfig.dev.json --noEmit && npx jest",
+    "test:update": "npm run build && npx tsc --project tsconfig.dev.json --noEmit && npx jest --updateSnapshot",
     "bundle:dynamoDBUpdateTable.lambda": "esbuild src/dynamoDBUpdateTable.lambda.ts --bundle --platform=node --target=node22 --outfile=assets/dynamoDBUpdateTable.lambda/index.js"
   },
   "author": {
@@ -24,7 +26,7 @@
     "@typescript-eslint/eslint-plugin": "^8",
     "@typescript-eslint/parser": "^8",
     "aws-cdk-lib": "2.207.0",
-    "@aws-sdk/client-dynamodb": "^3.0.0",
+    "@aws-sdk/client-dynamodb": "3.1113.0",
     "constructs": "10.4.2",
     "esbuild": "^0.25.8",
     "eslint": "^9",
